@@ -21,5 +21,15 @@ namespace Business.Concrete
             //iş kodları
             return _carDal.GetAll();
         }
+
+        public List<Car> GetAllByBrandId(int id)
+        {
+            return _carDal.GetAll(p => p.BrandId == id);        // her p için p'nin BrandId'si benim gönderdiğim id'ye eşitse onları filtrele
+        }
+
+        public List<Car> GetByDailyPrice(decimal min, decimal max)
+        {
+            return _carDal.GetAll(p => p.DailyPrice >= min && p.DailyPrice <= max);
+        }
     }
 }

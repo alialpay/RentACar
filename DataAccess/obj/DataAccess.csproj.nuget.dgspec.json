@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\alial\\OneDrive\\Belgeler\\GitHub\\kodlama.io\\Homework_Day7\\ReCapProject\\DataAccess\\DataAccess.csproj": {}
+    "C:\\Users\\alial\\OneDrive\\Belgeler\\GitHub\\ReCapProject\\DataAccess\\DataAccess.csproj": {}
   },
   "projects": {
-    "C:\\Users\\alial\\OneDrive\\Belgeler\\GitHub\\kodlama.io\\Homework_Day7\\ReCapProject\\DataAccess\\DataAccess.csproj": {
+    "C:\\Users\\alial\\OneDrive\\Belgeler\\GitHub\\ReCapProject\\DataAccess\\DataAccess.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\alial\\OneDrive\\Belgeler\\GitHub\\kodlama.io\\Homework_Day7\\ReCapProject\\DataAccess\\DataAccess.csproj",
+        "projectUniqueName": "C:\\Users\\alial\\OneDrive\\Belgeler\\GitHub\\ReCapProject\\DataAccess\\DataAccess.csproj",
         "projectName": "DataAccess",
-        "projectPath": "C:\\Users\\alial\\OneDrive\\Belgeler\\GitHub\\kodlama.io\\Homework_Day7\\ReCapProject\\DataAccess\\DataAccess.csproj",
+        "projectPath": "C:\\Users\\alial\\OneDrive\\Belgeler\\GitHub\\ReCapProject\\DataAccess\\DataAccess.csproj",
         "packagesPath": "C:\\Users\\alial\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\alial\\OneDrive\\Belgeler\\GitHub\\kodlama.io\\Homework_Day7\\ReCapProject\\DataAccess\\obj\\",
+        "outputPath": "C:\\Users\\alial\\OneDrive\\Belgeler\\GitHub\\ReCapProject\\DataAccess\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\alial\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -28,8 +28,8 @@
           "netstandard2.0": {
             "targetAlias": "netstandard2.0",
             "projectReferences": {
-              "C:\\Users\\alial\\OneDrive\\Belgeler\\GitHub\\kodlama.io\\Homework_Day7\\ReCapProject\\Entities\\Entities.csproj": {
-                "projectPath": "C:\\Users\\alial\\OneDrive\\Belgeler\\GitHub\\kodlama.io\\Homework_Day7\\ReCapProject\\Entities\\Entities.csproj"
+              "C:\\Users\\alial\\OneDrive\\Belgeler\\GitHub\\ReCapProject\\Entities\\Entities.csproj": {
+                "projectPath": "C:\\Users\\alial\\OneDrive\\Belgeler\\GitHub\\ReCapProject\\Entities\\Entities.csproj"
               }
             }
           }
@@ -44,6 +44,10 @@
         "netstandard2.0": {
           "targetAlias": "netstandard2.0",
           "dependencies": {
+            "Microsoft.EntityFrameworkCore.SqlServer": {
+              "target": "Package",
+              "version": "[3.1.11, )"
+            },
             "NETStandard.Library": {
               "suppressParent": "All",
               "target": "Package",
@@ -65,14 +69,14 @@
         }
       }
     },
-    "C:\\Users\\alial\\OneDrive\\Belgeler\\GitHub\\kodlama.io\\Homework_Day7\\ReCapProject\\Entities\\Entities.csproj": {
+    "C:\\Users\\alial\\OneDrive\\Belgeler\\GitHub\\ReCapProject\\Entities\\Entities.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\alial\\OneDrive\\Belgeler\\GitHub\\kodlama.io\\Homework_Day7\\ReCapProject\\Entities\\Entities.csproj",
+        "projectUniqueName": "C:\\Users\\alial\\OneDrive\\Belgeler\\GitHub\\ReCapProject\\Entities\\Entities.csproj",
         "projectName": "Entities",
-        "projectPath": "C:\\Users\\alial\\OneDrive\\Belgeler\\GitHub\\kodlama.io\\Homework_Day7\\ReCapProject\\Entities\\Entities.csproj",
+        "projectPath": "C:\\Users\\alial\\OneDrive\\Belgeler\\GitHub\\ReCapProject\\Entities\\Entities.csproj",
         "packagesPath": "C:\\Users\\alial\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\alial\\OneDrive\\Belgeler\\GitHub\\kodlama.io\\Homework_Day7\\ReCapProject\\Entities\\obj\\",
+        "outputPath": "C:\\Users\\alial\\OneDrive\\Belgeler\\GitHub\\ReCapProject\\Entities\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\alial\\AppData\\Roaming\\NuGet\\NuGet.Config",
