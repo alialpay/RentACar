@@ -22,3 +22,5 @@ C:\Users\alial\OneDrive\Belgeler\GitHub\ReCapProject\DataAccess\obj\Debug\netsta
 C:\Users\alial\OneDrive\Belgeler\GitHub\ReCapProject\DataAccess\obj\Debug\netstandard2.0\DataAccess.csproj.CopyComplete
 C:\Users\alial\OneDrive\Belgeler\GitHub\ReCapProject\DataAccess\obj\Debug\netstandard2.0\DataAccess.dll
 C:\Users\alial\OneDrive\Belgeler\GitHub\ReCapProject\DataAccess\obj\Debug\netstandard2.0\DataAccess.pdb
+C:\Users\alial\OneDrive\Belgeler\GitHub\ReCapProject\DataAccess\bin\Debug\netstandard2.0\Core.dll
+C:\Users\alial\OneDrive\Belgeler\GitHub\ReCapProject\DataAccess\bin\Debug\netstandard2.0\Core.pdb

@@ -78,3 +78,5 @@ C:\Users\alial\OneDrive\Belgeler\GitHub\ReCapProject\ConsoleUI\obj\Debug\netcore
 C:\Users\alial\OneDrive\Belgeler\GitHub\ReCapProject\ConsoleUI\obj\Debug\netcoreapp3.1\ConsoleUI.dll
 C:\Users\alial\OneDrive\Belgeler\GitHub\ReCapProject\ConsoleUI\obj\Debug\netcoreapp3.1\ConsoleUI.pdb
 C:\Users\alial\OneDrive\Belgeler\GitHub\ReCapProject\ConsoleUI\obj\Debug\netcoreapp3.1\ConsoleUI.genruntimeconfig.cache
+C:\Users\alial\OneDrive\Belgeler\GitHub\ReCapProject\ConsoleUI\bin\Debug\netcoreapp3.1\Core.dll
+C:\Users\alial\OneDrive\Belgeler\GitHub\ReCapProject\ConsoleUI\bin\Debug\netcoreapp3.1\Core.pdb
