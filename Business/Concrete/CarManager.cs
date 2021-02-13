@@ -20,7 +20,7 @@ namespace Business.Concrete
 
         public IResult Add(Car car)
         {
-            if(car.brandName)
+            
 
             _carDal.Add(car);
 
