@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Core.Utilities.Results
 {
-    class SuccessResult:Result
+    public class SuccessResult:Result
     {
         public SuccessResult(string message) : base(true, message) // mesaj varsa base'e true ve message yolluyoruz
         {

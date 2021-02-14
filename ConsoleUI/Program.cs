@@ -28,11 +28,19 @@ namespace ConsoleUI
             //BrandTest();
 
             CarManager carManager = new CarManager(new EfCarDal());
-
-            foreach (var car in carManager.GetCarDetails())
+            var result = carManager.GetCarDetails();
+            if (result.Success==true)
             {
-                Console.WriteLine(car.BrandName + car.ModelYear + "     renk:" + car.ColorName);
+                foreach (var car in carManager.GetCarDetails().Data)
+                {
+                    Console.WriteLine(car.BrandName + car.ModelYear + "     renk:" + car.ColorName);
+                }
             }
+            else
+            {
+                Console.WriteLine(result.Message);
+            }
+            
 
 
         }
@@ -49,10 +57,17 @@ namespace ConsoleUI
         private static void DescriptionTest()
         {
             CarManager carManager = new CarManager(new EfCarDal());
-
-            foreach (var car in carManager.GetAll())
+            var result = carManager.GetAll();
+            if (result.Success == true)
             {
-                Console.WriteLine(car.Description);
+                foreach (var car in result.Data)
+                {
+                    Console.WriteLine(car.Description);
+                }
+            }
+            else
+            {
+                Console.WriteLine(result.Message);
             }
         }
 
@@ -60,7 +75,7 @@ namespace ConsoleUI
         {
             CarManager carManager = new CarManager(new EfCarDal());
 
-            foreach (var car in carManager.GetAllByBrandId(2))
+            foreach (var car in carManager.GetAllByBrandId(2).Data)
             {
                 Console.WriteLine("Model Year:" + car.ModelYear + ", Daily Price:" + car.DailyPrice + ", Description:" + car.Description);
             }
@@ -69,10 +84,17 @@ namespace ConsoleUI
         private static void DailyPriceTest()
         {
             CarManager carManager = new CarManager(new EfCarDal());
-
-            foreach (var car in carManager.GetByDailyPrice(250, 400))
+            var result = carManager.GetByDailyPrice(250, 400);
+            if (result.Success == true)
             {
-                Console.WriteLine("Model Year:" + car.ModelYear + ", Daily Price:" + car.DailyPrice + ", Description:" + car.Description);
+                foreach (var car in result.Data)
+                {
+                    Console.WriteLine("Model Year:" + car.ModelYear + ", Daily Price:" + car.DailyPrice + ", Description:" + car.Description);
+                }
+            }
+            else
+            {
+                Console.WriteLine(result.Message);
             }
         }
     }
