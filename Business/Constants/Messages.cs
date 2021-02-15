@@ -14,5 +14,8 @@ namespace Business.Constants
         public static string CarDailyPriceInvalid = "Geçersiz günlük ücret";
         public static string MaintenanceTime = "Sistem bakımda";
         public static string CarListed = "Arabalar listelendi";
+        public static string RentalAddedError = "Araba eklenemedi";
+        public static string RentalAdded = "Araba eklendi";
+        public static string RentalDeleted = "Kayıt silindi";
     }
 }

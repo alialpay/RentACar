@@ -27,9 +27,24 @@ namespace ConsoleUI
 
             //BrandTest();
 
+            //DataTest();
+
+            RentalManager rentalManager = new RentalManager(new EfRentalDal());
+
+
+            //var result = carManager.GetAll();
+            var result = rentalManager.GetRentalDetails(1).Data;
+
+            foreach (var rental in result)
+            {
+                Console.WriteLine(rental.CustomerName + " " + rental.ReturnDate);
+            }
+        }
+        private static void DataTest()
+        {
             CarManager carManager = new CarManager(new EfCarDal());
             var result = carManager.GetCarDetails();
-            if (result.Success==true)
+            if (result.Success == true)
             {
                 foreach (var car in carManager.GetCarDetails().Data)
                 {
@@ -40,9 +55,6 @@ namespace ConsoleUI
             {
                 Console.WriteLine(result.Message);
             }
-            
-
-
         }
 
         private static void BrandTest()

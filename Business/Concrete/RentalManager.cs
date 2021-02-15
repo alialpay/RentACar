@@ -1,4 +1,5 @@
 ﻿using Business.Abstract;
+using Business.Constants;
 using Core.Utilities.Results;
 using DataAccess.Abstract;
 using Entities.Concrete;
@@ -9,7 +10,7 @@ using System.Text;
 
 namespace Business.Concrete
 {
-    class RentalManager : IRentalService
+    public class RentalManager : IRentalService
     {
         IRentalDal _rentalDal;
         public RentalManager(IRentalDal rentalDal)
@@ -18,40 +19,48 @@ namespace Business.Concrete
         }
         public IResult Add(Rental rental)
         {
-            
+            var result = CheckReturnDate(rental.CarId);
+            if (!result.Success)
+            {
+                return new ErrorResult(result.Message);
+            }
             _rentalDal.Add(rental);
-            return new SuccessResult();
+            return new SuccessResult(result.Message);
+            
         }
 
         public IResult CheckReturnDate(int carId)
         {
-            var result = _rentalDal.GetRentalDetails(r => r.CarId == carId && r.ReturnDate == null);
-            return 
+            var result = _rentalDal.GetRentalDetails(x => x.CarId == carId && x.ReturnDate == null);
+            if (result.Count > 0)
+            {
+                return new ErrorResult(Messages.RentalAddedError);
+            }
+            return new SuccessResult(Messages.RentalAdded);
+
         }
 
         public IResult Delete(Rental rental)
         {
-            throw new NotImplementedException();
+            _rentalDal.Delete(rental);
+            return new SuccessResult(Messages.RentalDeleted);
         }
 
-        public IDataResult<List<Result>> GetAll()
+        public IDataResult<List<Rental>> GetAll()
         {
-            throw new NotImplementedException();
+            return new SuccessDataResult<List<Rental>>(_rentalDal.GetAll());
         }
 
-        public IDataResult<List<RentalDetailDto>> GetRentalDetailsDto(int carId)
+        public IDataResult<List<RentalDetailDto>> GetRentalDetails(int carId)
         {
-            throw new NotImplementedException();
+            return new SuccessDataResult<List<RentalDetailDto>>(_rentalDal.GetRentalDetails(r => r.Id == carId));
         }
 
         public IResult Update(Rental rental)
         {
-            throw new NotImplementedException();
+            _rentalDal.Add(rental);
+            return new SuccessResult();
         }
 
-        public IResult UpdateReturnDate(int carID)
-        {
-            throw new NotImplementedException();
-        }
     }
 }
