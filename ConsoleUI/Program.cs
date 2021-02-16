@@ -5,7 +5,7 @@ using System;
 
 namespace ConsoleUI
 {   //S'O'LID
-    //Open Closed Principle     projene ilave yaptığında mevcut kodların hiç birisine dokunmamalısın demek
+    //Open Closed Principle    projene ilave yaptığında mevcut kodların hiç birisine dokunmamalısın demek
     class Program
     {
         static void Main(string[] args)
