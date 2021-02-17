@@ -6,7 +6,7 @@ using System.Text;
 
 namespace DataAccess.Abstract
 {
-    interface IUserDal:IEntityRepository<User>
+    public interface IUserDal:IEntityRepository<User>
     {
     }
 }

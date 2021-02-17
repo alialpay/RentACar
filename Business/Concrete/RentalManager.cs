@@ -6,6 +6,7 @@ using Entities.Concrete;
 using Entities.DTOs;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace Business.Concrete
@@ -31,7 +32,7 @@ namespace Business.Concrete
 
         public IResult CheckReturnDate(int carId)
         {
-            var result = _rentalDal.GetRentalDetails(x => x.CarId == carId && x.ReturnDate == null);
+            var result = _rentalDal.GetRentalDetails(r => r.CarId == carId && r.ReturnDate == null);
             if (result.Count > 0)
             {
                 return new ErrorResult(Messages.RentalAddedError);
@@ -48,7 +49,7 @@ namespace Business.Concrete
 
         public IDataResult<List<Rental>> GetAll()
         {
-            return new SuccessDataResult<List<Rental>>(_rentalDal.GetAll());
+            return new SuccessDataResult<List<Rental>>(_rentalDal.GetAll(), Messages.RentalListed);
         }
 
         public IDataResult<List<RentalDetailDto>> GetRentalDetails(int carId)
@@ -59,6 +60,18 @@ namespace Business.Concrete
         public IResult Update(Rental rental)
         {
             _rentalDal.Add(rental);
+            return new SuccessResult(Messages.RentalUpdate);
+        }
+        public IResult UpdateReturnDate(int carId)
+        {
+            var result = _rentalDal.GetAll(r => r.CarId == carId);
+            var updatedRental = result.LastOrDefault();
+            if (updatedRental.ReturnDate != null)
+            {
+                return new ErrorResult();
+            }
+            updatedRental.ReturnDate = DateTime.Now;
+            _rentalDal.Update(updatedRental);
             return new SuccessResult();
         }
 
