@@ -66,3 +66,7 @@ C:\Users\alial\OneDrive\Belgeler\GitHub\ReCapProject\WebAPI\bin\Debug\netcoreapp
 C:\Users\alial\OneDrive\Belgeler\GitHub\ReCapProject\WebAPI\bin\Debug\netcoreapp3.1\DataAccess.pdb
 C:\Users\alial\OneDrive\Belgeler\GitHub\ReCapProject\WebAPI\bin\Debug\netcoreapp3.1\Entities.pdb
 C:\Users\alial\OneDrive\Belgeler\GitHub\ReCapProject\WebAPI\obj\Debug\netcoreapp3.1\WebAPI.csproj.CopyComplete
+C:\Users\alial\OneDrive\Belgeler\GitHub\ReCapProject\WebAPI\bin\Debug\netcoreapp3.1\Autofac.dll
+C:\Users\alial\OneDrive\Belgeler\GitHub\ReCapProject\WebAPI\bin\Debug\netcoreapp3.1\Autofac.Extras.DynamicProxy.dll
+C:\Users\alial\OneDrive\Belgeler\GitHub\ReCapProject\WebAPI\bin\Debug\netcoreapp3.1\Castle.Core.dll
+C:\Users\alial\OneDrive\Belgeler\GitHub\ReCapProject\WebAPI\bin\Debug\netcoreapp3.1\Autofac.Extensions.DependencyInjection.dll

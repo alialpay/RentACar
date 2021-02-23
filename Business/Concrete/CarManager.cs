@@ -33,7 +33,7 @@ namespace Business.Concrete
 
         public IDataResult<List<Car>> GetAll()
         {
-            if (DateTime.Now.Hour == 22)        // saat 22 de listelenme işleminin yapılmasını engelliyoruz
+            if (DateTime.Now.Hour == 2)        // saat 22 de listelenme işleminin yapılmasını engelliyoruz
             {
                 return new ErrorDataResult<List<Car>>(Messages.MaintenanceTime);
             }
