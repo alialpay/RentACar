@@ -16,22 +16,32 @@ namespace Business.Concrete
 {
     public class CarManager : ICarService
     {
-        ICarDal _carDal;        // Bir iş sınıfı, başka bir sınıfı new lemez. Bu şekilde injection yapıyoruz.
-                                // Ampulden generate constructor şıkkını kullanıyoruz. İş sınıflarında constructor kullanıyoruz.
-        public CarManager(ICarDal carDal)
+        ICarDal _carDal;                // Bir iş sınıfı, başka bir sınıfı new lemez. Bu şekilde injection yapıyoruz.
+                                        // Ampulden generate constructor şıkkını kullanıyoruz. İş sınıflarında constructor kullanıyoruz.
+        IBrandService _brandService;    // Eğer 
+        public CarManager(ICarDal carDal, IBrandService brandService)
         {
             _carDal = carDal;
+            _brandService = brandService;
         }
 
         [ValidationAspect(typeof(CarValidator))]
         public IResult Add(Car car)
         {
+            // business codes
+
             
-            //business codes
+            
+            if (CheckIfCarCountOfBrandCorrect(car.BrandId).Success)
+            {
+                _carDal.Add(car);
 
-            _carDal.Add(car);
+                return new SuccessResult(Messages.CarAdded);
+            }
 
-            return new SuccessResult(Messages.CarAdded);
+            return new ErrorResult();
+
+            
         }
 
         public IDataResult<List<Car>> GetAll()
@@ -62,6 +72,23 @@ namespace Business.Concrete
         public IDataResult<List<CarDetailDto>> GetCarDetails()
         {
             return new SuccessDataResult<List<CarDetailDto>>(_carDal.GetCarDetails());
+        }
+
+
+        public IResult Update(Car car)
+        {
+            throw new NotImplementedException();
+        }
+
+        private IResult CheckIfCarCountOfBrandCorrect(int brandId)
+        {
+            // select count(*) from cars where brandId = 1
+            var result = _carDal.GetAll(c => c.BrandId == brandId).Count;
+            if (result > 5)
+            {
+                return new ErrorResult(Messages.CarCountOfBrandError);
+            }
+            return new SuccessResult();
         }
         
     }

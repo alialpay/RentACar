@@ -33,13 +33,15 @@ namespace Business.Constants
         public static string BrandAdded = "Marka bilgisi eklendi";
         public static string BrandDeleted = "Geçerli marka sistemden silindi";
         public static string BrandUpdated = "Marka bilgileri güncellendi";
-        internal static string ColorAdded = "Renk eklendi";
-        internal static string ColorDeleted = "Renk bilgisi silindi";
-        internal static string ColorUpdated = "Renk bilgileri güncellendi";
-        internal static string ColorsListed = "Renkler listelendi";
-        internal static string ColorIdListed = "Renk id'leri listelendi";
-        internal static string RentalListed = "Kiralama işlemi listelendi";
-        internal static string RentalUpdate = "Kiralama bilgisi güncellendi";
-        internal static string CarDescriptionIsNull = "Araba açıklaması boş";
+        public static string ColorAdded = "Renk eklendi";
+        public static string ColorDeleted = "Renk bilgisi silindi";
+        public static string ColorUpdated = "Renk bilgileri güncellendi";
+        public static string ColorsListed = "Renkler listelendi";
+        public static string ColorIdListed = "Renk id'leri listelendi";
+        public static string RentalListed = "Kiralama işlemi listelendi";
+        public static string RentalUpdate = "Kiralama bilgisi güncellendi";
+        public static string CarDescriptionIsNull = "Araba açıklaması boş";
+        public static string ModelYearInvalid = "Sistemde en fazla 5 yaşlı araba bulunabilir";
+        public static string CarCountOfBrandError = "Sistemde bir markadan en fazla 5 adet araç bulunabilir";
     }
 }
