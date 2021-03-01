@@ -18,7 +18,7 @@ namespace Business.Concrete
     {
         ICarDal _carDal;                // Bir iş sınıfı, başka bir sınıfı new lemez. Bu şekilde injection yapıyoruz.
                                         // Ampulden generate constructor şıkkını kullanıyoruz. İş sınıflarında constructor kullanıyoruz.
-        public CarManager(ICarDal carDal, IBrandService brandService)
+        public CarManager(ICarDal carDal)
         {
             _carDal = carDal;
         }
