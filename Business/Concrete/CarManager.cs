@@ -13,7 +13,14 @@ using System.Collections.Generic;
 using System.Text;
 
 namespace Business.Concrete
-{
+{/* Cross Cutting Concersns
+  *     Validation      doğrulama
+  *     Log             kayıt
+  *     Cache           önbellek
+  *     Transaction     işlem
+  *     Authorization   yetkilendirme
+  Bunlar katmanları dikine keser. Bunların hepsi iş kuralı olarak burada yapılırsa çorbaya döner
+  */
     public class CarManager : ICarService
     {
         ICarDal _carDal;                // Bir iş sınıfı, başka bir sınıfı new lemez. Bu şekilde injection yapıyoruz.
@@ -75,14 +82,21 @@ namespace Business.Concrete
 
         public IResult Update(Car car)
         {
-            throw new NotImplementedException();
+            if (CheckIfCarCountOfBrandCorrect(car.BrandId).Success)
+            {
+                _carDal.Update(car);
+
+                return new SuccessResult(Messages.CarUpdated);
+            }
+
+            return new ErrorResult();
         }
 
-        private IResult CheckIfCarCountOfBrandCorrect(int brandId)
+        private IResult CheckIfCarCountOfBrandCorrect(int brandId)      // bir marka için en fazla 5 araba olabilir. bu bir iş kuralı. update için add için de update için vs de geçerli olabilir. o yüzden ayırdık 
         {
             // select count(*) from cars where brandId = 1
-            var result = _carDal.GetAll(c => c.BrandId == brandId).Count;
-            if (result > 5)
+            var result = _carDal.GetAll(c => c.BrandId == brandId).Count;       // eklemek istediğim arabanın markasında kaç tane kayıt var?
+            if (result > 5)                                                     // kayıt 5'den fazla mı
             {
                 return new ErrorResult(Messages.CarCountOfBrandError);
             }
