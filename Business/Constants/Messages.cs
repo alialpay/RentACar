@@ -43,6 +43,8 @@ namespace Business.Constants
         public static string RentalUpdate = "Kiralama bilgisi güncellendi";
         public static string CarDescriptionIsNull = "Araba açıklaması boş";
         public static string ModelYearInvalid = "Sistemde en fazla 5 yaşlı araba bulunabilir";
-        public static string CarCountOfBrandError = "Sistemde bir markadan en fazla 5 adet araç bulunabilir";
+        public static string CarCountOfColorError = "Sistemde aynı renkte en fazla 5 araba bulunabilir";
+        public static string BrandAlreadyExists = "Aynı markadan zaten bir araba var";
+        public static string CarImageLimitExceeded = "Fotoğraf yükleme sınırı aşıldı";
     }
 }

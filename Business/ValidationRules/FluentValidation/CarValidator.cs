@@ -15,13 +15,13 @@ namespace Business.ValidationRules.FluentValidation
             RuleFor(c => c.BrandId).NotEmpty();
             RuleFor(c => c.ModelYear).NotEmpty();
             RuleFor(c => c.DailyPrice).LessThanOrEqualTo(500).When(c => c.BrandId == 1);
-            RuleFor(c => c.Description).Must(StartWithA).WithMessage("Açıklama A harfi ile başlamalı"); // saçma bir kural ekledik ama kendi şartımızı oluşturmak için bir örnek oldu
+           // RuleFor(c => c.Description).Must(StartWithA).WithMessage("Açıklama A harfi ile başlamalı"); // saçma bir kural ekledik ama kendi şartımızı oluşturmak için bir örnek oldu
 
         }
 
-        private bool StartWithA(string arg)
+       /* private bool StartWithA(string arg)
         {
             return arg.StartsWith("A");
-        }
+        }*/
     }
 }

@@ -3,6 +3,7 @@ using Business.Constants;
 using Business.ValidationRules.FluentValidation;
 using Core.Aspects.Autofac.Validation;
 using Core.CrossCuttingConcerns.Validation;
+using Core.Utilities.Business;
 using Core.Utilities.Results;
 using DataAccess.Abstract;
 using Entities.Concrete;
@@ -10,6 +11,7 @@ using Entities.DTOs;
 using FluentValidation;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace Business.Concrete
@@ -25,6 +27,8 @@ namespace Business.Concrete
     {
         ICarDal _carDal;                // Bir iş sınıfı, başka bir sınıfı new lemez. Bu şekilde injection yapıyoruz.
                                         // Ampulden generate constructor şıkkını kullanıyoruz. İş sınıflarında constructor kullanıyoruz.
+       // IBrandService _brandService;        // bir entity manager kendisi hariç bir dalı'ı enjekte edemez. bu yüzden service kullanılmalı
+
         public CarManager(ICarDal carDal)
         {
             _carDal = carDal;
@@ -35,16 +39,18 @@ namespace Business.Concrete
         {
             // business codes
 
-            
-            
-            if (CheckIfCarCountOfBrandCorrect(car.BrandId).Success)
+
+
+
+            IResult result = BusinessRules.Run(CheckIfBrandExists(car.BrandId), CheckIfCarCountOfColorCorrect(car.ColorId));        // yarın bir gün yeni bir kural gelirse virgülle ayır ve ekle
+
+            if (result != null)     // yani "kurala uymayan bir durum aluşmuşsa"
             {
-                _carDal.Add(car);
-
-                return new SuccessResult(Messages.CarAdded);
+                return result;
             }
+            _carDal.Add(car);
 
-            return new ErrorResult();
+            return new SuccessResult(Messages.CarAdded);
 
             
         }
@@ -82,7 +88,7 @@ namespace Business.Concrete
 
         public IResult Update(Car car)
         {
-            if (CheckIfCarCountOfBrandCorrect(car.BrandId).Success)
+            if (CheckIfCarCountOfColorCorrect(car.ColorId).Success)
             {
                 _carDal.Update(car);
 
@@ -92,16 +98,30 @@ namespace Business.Concrete
             return new ErrorResult();
         }
 
-        private IResult CheckIfCarCountOfBrandCorrect(int brandId)      // bir marka için en fazla 5 araba olabilir. bu bir iş kuralı. update için add için de update için vs de geçerli olabilir. o yüzden ayırdık 
+        private IResult CheckIfCarCountOfColorCorrect(int colorId)      // aynı renkte en fazla 5 araba olabilir. bu bir iş kuralı. update için add için de update için vs de geçerli olabilir. o yüzden ayırdık 
         {
             // select count(*) from cars where brandId = 1
-            var result = _carDal.GetAll(c => c.BrandId == brandId).Count;       // eklemek istediğim arabanın markasında kaç tane kayıt var?
+            var result = _carDal.GetAll(c => c.ColorId == colorId).Count;       // eklemek istediğim arabanın renginden kaç tane kayıt var?
             if (result > 5)                                                     // kayıt 5'den fazla mı
             {
-                return new ErrorResult(Messages.CarCountOfBrandError);
+                return new ErrorResult(Messages.CarCountOfColorError);
+            }
+            return new SuccessResult();
+        }
+
+        
+        private IResult CheckIfBrandExists(int brandId)      
+        {
+            // select count(*) from cars where brandId = 1
+            var result = _carDal.GetAll(c => c.BrandId == brandId).Any();       
+            if (result)                                                     // result true demek bu
+            {
+                return new ErrorResult(Messages.BrandAlreadyExists);
             }
             return new SuccessResult();
         }
         
+
+
     }
 }
