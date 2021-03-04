@@ -1,4 +1,5 @@
 ﻿using Business.Abstract;
+using Business.BusinessAspects.Autofac;
 using Business.Constants;
 using Business.ValidationRules.FluentValidation;
 using Core.Aspects.Autofac.Validation;
@@ -25,9 +26,9 @@ namespace Business.Concrete
   */
     public class CarManager : ICarService
     {
-        ICarDal _carDal;                // Bir iş sınıfı, başka bir sınıfı new lemez. Bu şekilde injection yapıyoruz.
-                                        // Ampulden generate constructor şıkkını kullanıyoruz. İş sınıflarında constructor kullanıyoruz.
-       // IBrandService _brandService;        // bir entity manager kendisi hariç bir dalı'ı enjekte edemez. bu yüzden service kullanılmalı
+        ICarDal _carDal;                            // Bir iş sınıfı, başka bir sınıfı new lemez. Bu şekilde injection yapıyoruz.
+                                                    // Ampulden generate constructor şıkkını kullanıyoruz. İş sınıflarında constructor kullanıyoruz.
+       // IBrandService _brandService;                // bir entity manager kendisi hariç bir dalı'ı enjekte edemez. bu yüzden service kullanılmalı
 
         public CarManager(ICarDal carDal)
         {
@@ -35,7 +36,7 @@ namespace Business.Concrete
         }
 
         //Claim
-        //[SecuredOperation("car.add")]
+        [SecuredOperation("car.add,admin")]                     //burası yetki kontrolü yapar// Bu authorization aspect'leri genellikle business'a yazılır. Çünkü her projenin yetkilendirme algoritması değişebilir. Zaten altyapıyı core'a yazmıştık, bu aspect kısmı ise business'a yazacağız
         [ValidationAspect(typeof(CarValidator))]
         public IResult Add(Car car)
         {
