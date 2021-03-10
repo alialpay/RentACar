@@ -118,3 +118,7 @@ C:\Users\alial\OneDrive\Belgeler\GitHub\ReCapProject\ConsoleUI\bin\Debug\netcore
 C:\Users\alial\OneDrive\Belgeler\GitHub\ReCapProject\ConsoleUI\bin\Debug\netcoreapp3.1\zh-Hant\Microsoft.TestPlatform.CoreUtilities.resources.dll
 C:\Users\alial\OneDrive\Belgeler\GitHub\ReCapProject\ConsoleUI\bin\Debug\netcoreapp3.1\zh-Hant\Microsoft.VisualStudio.TestPlatform.ObjectModel.resources.dll
 C:\Users\alial\OneDrive\Belgeler\GitHub\ReCapProject\ConsoleUI\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Http.Abstractions.dll
+C:\Users\alial\OneDrive\Belgeler\GitHub\ReCapProject\ConsoleUI\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Http.dll
+C:\Users\alial\OneDrive\Belgeler\GitHub\ReCapProject\ConsoleUI\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.WebUtilities.dll
+C:\Users\alial\OneDrive\Belgeler\GitHub\ReCapProject\ConsoleUI\bin\Debug\netcoreapp3.1\Microsoft.Extensions.ObjectPool.dll
+C:\Users\alial\OneDrive\Belgeler\GitHub\ReCapProject\ConsoleUI\bin\Debug\netcoreapp3.1\Microsoft.Net.Http.Headers.dll
