@@ -2,7 +2,10 @@
 using Business.BusinessAspects.Autofac;
 using Business.Constants;
 using Business.ValidationRules.FluentValidation;
+using Core.Aspects.Autofac.Caching;
+using Core.Aspects.Autofac.Transaction;
 using Core.Aspects.Autofac.Validation;
+using Core.Aspects.Performance;
 using Core.CrossCuttingConcerns.Validation;
 using Core.Utilities.Business;
 using Core.Utilities.Results;
@@ -38,6 +41,7 @@ namespace Business.Concrete
         //Claim
         [SecuredOperation("car.add,admin")]                     //burası yetki kontrolü yapar// Bu authorization aspect'leri genellikle business'a yazılır. Çünkü her projenin yetkilendirme algoritması değişebilir. Zaten altyapıyı core'a yazmıştık, bu aspect kısmı ise business'a yazacağız
         [ValidationAspect(typeof(CarValidator))]
+        [CacheRemoveAspect("ICarService.Get")]
         public IResult Add(Car car)
         {
             // business codes
@@ -78,7 +82,9 @@ namespace Business.Concrete
         {
             return new SuccessDataResult<List<Car>>(_carDal.GetAll(p => p.DailyPrice >= min && p.DailyPrice <= max));
         }
-
+        
+        [CacheAspect]
+       // [PerformanceAspect(5)]      // bu metodun çalışması 5sn yi geçerse beni uyar
         public IDataResult<Car> GetById(int carId)
         {
             return new SuccessDataResult<Car>(_carDal.Get(c => c.Id == carId));
@@ -89,7 +95,8 @@ namespace Business.Concrete
             return new SuccessDataResult<List<CarDetailDto>>(_carDal.GetCarDetails());
         }
 
-
+        [ValidationAspect(typeof(CarValidator))]
+        [CacheRemoveAspect("ICarService.Get")]  // bellekteki ICarService'deki içerisinde Get olan tüm keyleri sil demek
         public IResult Update(Car car)
         {
             if (CheckIfCarCountOfColorCorrect(car.ColorId).Success)
@@ -124,8 +131,11 @@ namespace Business.Concrete
             }
             return new SuccessResult();
         }
-        
 
-
+       // [TransactionScopeAspect]
+        public IResult AddTransactionalTest(Car car)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
