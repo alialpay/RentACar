@@ -61,6 +61,7 @@ namespace Business.Concrete
 
             
         }
+       
 
         [CacheAspect]       //key,value
         public IDataResult<List<Car>> GetAll()
@@ -72,6 +73,7 @@ namespace Business.Concrete
             //iş kodları
             return new SuccessDataResult<List<Car>>(_carDal.GetAll(),Messages.CarListed);
         }
+
 
         public IDataResult<List<Car>> GetAllByBrandId(int id)
         {
@@ -93,6 +95,10 @@ namespace Business.Concrete
         public IDataResult<List<CarDetailDto>> GetCarDetails()
         {
             return new SuccessDataResult<List<CarDetailDto>>(_carDal.GetCarDetails());
+        }
+        public IDataResult<List<CarDetailDto>> GetCarDetail(int carId)
+        {
+            return new SuccessDataResult<List<CarDetailDto>>(_carDal.GetCarDetails().Where(x => x.BrandId == carId).ToList());
         }
 
         [ValidationAspect(typeof(CarValidator))]
@@ -137,5 +143,16 @@ namespace Business.Concrete
         {
             throw new NotImplementedException();
         }
+
+        public IDataResult<List<Car>> GetAllByColorId(int id)
+        {
+            return new SuccessDataResult<List<Car>>(_carDal.GetAll(p => p.ColorId == id));
+        }
+
+        public IDataResult<List<CarDetailDto>> GetCarsByBrandId(int brandId)
+        {
+            return new SuccessDataResult<List<CarDetailDto>>(_carDal.GetCarDetails().Where(x => x.BrandId == brandId).ToList());
+        }
     }
 }
+// carDetaildto döndüren bir method getall
