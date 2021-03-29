@@ -22,8 +22,6 @@ namespace DataAccess.Concrete.EntityFramework
                              on c.BrandId equals b.BrandId
                              join co in context.Colors
                              on c.ColorId equals co.ColorId
-                             join img in context.CarImages 
-                             on c.Id equals img.CarId
                              select new CarDetailDto
                              {
                                  CarId = c.Id,
@@ -33,7 +31,8 @@ namespace DataAccess.Concrete.EntityFramework
                                  ColorName = co.ColorName,
                                  DailyPrice = c.DailyPrice,
                                  Description = c.Description,
-                                 ModelYear = c.ModelYear 
+                                 ModelYear = c.ModelYear,
+                                 ImagePath = context.CarImages.Where(x => x.CarId == c.Id).FirstOrDefault().ImagePath
                              };
                 return result.ToList();
             }
