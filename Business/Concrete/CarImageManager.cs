@@ -32,7 +32,7 @@ namespace Business.Concrete
             {
                 return result;
             }
-            carImage.ImagePath = FileHelper.Add(file);
+            carImage.ImagePath = FileHelper.Add(file) ;
             carImage.Date = DateTime.Now;
             _carImageDal.Add(carImage);
             return new SuccessResult();
