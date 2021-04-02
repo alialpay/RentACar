@@ -16,5 +16,7 @@ namespace Entities.Concrete
         public string NameOnTheCard { get; set; }
 
         public decimal MoneyInTheCard { get; set; }
+        public object CardCvv { get; set; }
+        public string ExpirationDate { get; set; }
     }
 }

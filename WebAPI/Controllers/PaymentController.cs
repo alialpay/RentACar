@@ -69,5 +69,26 @@ namespace WebAPI.Controllers
             }
             return BadRequest(result);
         }
+        [HttpGet("getbycardnumber")]
+        public IActionResult GetByCardNumber(string cardNumber)
+        {
+            var result = _paymentService.GetByCardNumber(cardNumber);
+            if (result.Success)
+            {
+                return Ok(result);
+            }
+            return BadRequest(result);
+        }
+
+        [HttpPost("verifycard")]
+        public IActionResult VerifyCard(CreditCard creditCard)
+        {
+            var result = _paymentService.VerifyCard(creditCard);
+            if (result.Success)
+            {
+                return Ok(result);
+            }
+            return Ok(result);
+        }
     }
 }

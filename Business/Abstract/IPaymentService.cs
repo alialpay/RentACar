@@ -13,5 +13,8 @@ namespace Business.Abstract
         IResult Delete(CreditCard customer);
         IDataResult<List<CreditCard>> GetAll();
         IDataResult<CreditCard> GetById(int id);
+        IResult VerifyCard(CreditCard creditCard);
+        IDataResult<List<CreditCard>> GetByCardNumber(string cardNumber);
+
     }
 }
